@@ -1,4 +1,4 @@
-QQ Connect SDK for Ruby On Rails
+QQ Connect SDK for Ruby
 ================
 
 ### 警告:
@@ -8,7 +8,7 @@ QQ Connect SDK for Ruby On Rails
 若你不需要使用新的API,则可以保留旧版本.
 
 ### 安装:
-    
+
 在你的Gemfile里新增一行
 
 `gem 'qq', :git => 'git://github.com/046569/qq.git'`

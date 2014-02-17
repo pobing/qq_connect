@@ -1,13 +1,15 @@
+#encoding: utf-8
 require 'open-uri'
 require 'net/http'
 class Qq
-	attr_reader :token,:openid,:auth
+	attr_reader :openid,:auth
 	#获取令牌:认证码code=params[:code],httpstat=request.env['HTTP_CONNECTION']
-	def initialize(code,httpstat)
+	def initialize(access_token)
 		#获取令牌
-		@token ||= open('https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=' + APPID + '&client_secret=' + APPKEY + '&code=' + code + '&state='+ httpstat + REDURL).read[/(?<=access_token=)\w{32}/]
+                @token = access_token
+		#@token ||= open('https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=' + APPID + '&client_secret=' + APPKEY + '&code=' + code + '&state='+ httpstat + REDURL).read[/(?<=access_token=)\w{32}/]
 		#获取Openid
-		@openid ||= open('https://graph.qq.com/oauth2.0/me?access_token=' + @token).read[/\w{32}/]		
+		@openid ||= open('https://graph.qq.com/oauth2.0/me?access_token=' + @token).read[/\w{32}/]
 		#获取通用验证参数
 		@auth ||= '?access_token=' + @token + '&oauth_consumer_key=' + APPID + '&openid=' + @openid
 	end
@@ -27,10 +29,10 @@ class Qq
 			back.use_ssl=true
 			back=back.post(url.path,@auth[1..-1] + params[2]).body
 		else
-			raise 'API not found'		
+			raise 'API not found'
 		end
 		back=MultiJson.decode(back)
 		raise back['ret'].to_s + ': ' + back['msg'] if back['ret'] != 0
 		return back
-	end	
+	end
 end
