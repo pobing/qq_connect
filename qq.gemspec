@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-	s.name             = 'qq'
+	s.name             = 'qq-connect'
 	s.version          = '0.1.1'
 	s.summary          = "QQ Connect SDK for Sinatra"
 	s.description	   = "It's a simple way to connect to QQ Connect"

@@ -11,7 +11,7 @@ QQ Connect SDK for Ruby
 
 在你的Gemfile里新增一行
 
-`gem 'qq', :git => 'git://github.com/046569/qq.git'`
+`gem 'qq', :git => 'git://github.com/pobing/qq-connect.git'`
 
 然后
 
@@ -30,7 +30,7 @@ QQ Connect SDK for Ruby
 回调页示例(获取用户昵称)：
 
 ```Ruby
-user=Qq.new(params[:code],request.env['HTTP_CONNECTION'])
+user=Qq.new(access_token])
 user.get_user_info('https://graph.qq.com/user/get_user_info')['nickname']
 ```
 
