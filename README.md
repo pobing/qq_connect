@@ -1,17 +1,18 @@
-QQ Connect SDK for Ruby
+QQ Connect SDK for Ruby Api
+
+
 ================
 
-### 警告:
+### 通知:
 
-从`0.1.1`开始,重新设计了整套SDK,因此并不向下兼容.
-
-若你不需要使用新的API,则可以保留旧版本.
+本 gem 是在 [QQConnect SDK](https://github.com/046569/qq)基础上做了修改，使用的前提条件：已经通过Authorization Code获取了Access Token, 具体 [参考](http://wiki.connect.qq.com/%E4%BD%BF%E7%94%A8authorization_code%E8%8E%B7%E5%8F%96access_token
+), 再通过获取openid 就可以调用 qq 互联的api
 
 ### 安装:
 
 在你的Gemfile里新增一行
 
-`gem 'qq', :git => 'git://github.com/pobing/qq-connect.git'`
+`gem 'qq_connect'`
 
 然后
 
@@ -19,19 +20,18 @@ QQ Connect SDK for Ruby
 
 ### 使用:
 
-在你喜欢的地方定义:
-
-`APPID='你的ID'`
-
-`APPKEY='你的key'`
-
-`REDURL='&redirect_uri=你的跳转地址'`
-
-回调页示例(获取用户昵称)：
+必须传入的两个参数：
 
 ```Ruby
-user=Qq.new(access_token])
-user.get_user_info('https://graph.qq.com/user/get_user_info')['nickname']
+appid // 你注册的 app的 appid
+access_token //获取到的用户的accessToken
+```
+获取用户信息：
+
+```Ruby
+user=Qq.new(appid,access_token])
+res = user.get_user_info('https://graph.qq.com/user/get_user_info')
+p res
 ```
 
 相关参数请查阅[QQ互联开放平台](http://connect.qq.com/intro/login/)
