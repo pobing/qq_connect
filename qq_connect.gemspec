@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
 	s.description	   = "It's a simple way to connect to QQ Connect"
 	s.authors          = ['pobing']
 	s.email            = 'cn.jdong@gmail.com'
-	s.files            = ["lib/qq.rb"]
+	s.files            = ["lib/qq_connect.rb"]
 	s.homepage         = 'https://github.com/pobing/qq_connect'
 	s.require_paths    << 'lib'
 	s.license          = 'MIT'
